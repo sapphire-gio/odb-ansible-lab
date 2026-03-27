@@ -1,0 +1,4 @@
+plugin: azure.azcollection.azure_rm
+auth_source: msi
+hostnames:
+    - name
