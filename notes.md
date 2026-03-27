@@ -37,4 +37,13 @@ ansible -i inventory.yml -m ping all
 ansible -m ping all
 ```
 
+## Run Ansible variables Playbook
+```
+ansible-playbook ansible-vars.yml
+```
+
+## Read file content using ad-hoc ansible command
+```
+ansible -m ansible.builtin.command -a "cat /tmp/ip.txt" all
+```
 

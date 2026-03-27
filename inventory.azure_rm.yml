@@ -2,3 +2,9 @@ plugin: azure.azcollection.azure_rm
 auth_source: msi
 hostnames:
     - name
+conditional_groups:
+  azure_rm: true
+  has_attached_disks: "data_disks | count > 0"
+keyed_groups:
+  - prefix: azure_rm
+    key: os_profile.system

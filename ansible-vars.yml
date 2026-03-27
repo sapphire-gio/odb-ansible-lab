@@ -1,0 +1,20 @@
+- name: Show vars
+  hosts: all
+  gather_facts: true
+  tasks:
+    # - name: Show vars
+    #   ansible.builtin.debug:
+    #     # var: ansible_facts # <-- test with gather_facts: false to see the difference
+    #     # var: ansible_facts['all_ipv4_addresses'][0]
+    #     # msg: "My IP is: {{ ansible_facts['all_ipv4_addresses'][0] }}"
+    #     # var: inventory_hostname
+    #     # msg: "{{ inventory_hostname }}"
+    #     # msg: "{{ hostvars[inventory_hostname] }}"
+    #     # var: playbook_dir
+    - name: Create a file with the content of the variable
+      ansible.builtin.copy:
+        content: "{{ ansible_facts.all_ipv4_addresses[0] }}"
+        # content: "{{ ansible_host }}"
+        dest: /tmp/ip.txt
+        mode: '0644'
+ 
