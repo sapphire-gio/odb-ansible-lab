@@ -1,0 +1,14 @@
+all:
+  hosts:
+    ODBTST:
+      host_var: host_value
+      ansible_host: 10.40.44.4
+      ansible_user: azureuser
+  vars:
+    global_var: global_value
+  children:
+    linux:
+      hosts:
+        ODBTST:
+      vars:
+        group_var: group_value
