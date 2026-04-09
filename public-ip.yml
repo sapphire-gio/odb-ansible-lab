@@ -1,0 +1,24 @@
+- name: Get public IP
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Get public IP address
+      ansible.builtin.uri:
+        url: https://api.ipify.org
+        method: GET
+        return_content: true
+        body_format: json
+        timeout: 5
+      register: public_ip_data
+      # delegate_to: localhost
+      # run_once: true
+
+    - name: Show public IP
+      ansible.builtin.debug:
+        var: public_ip_data.content
+
+    - name: Create a file with the content of the variable
+      ansible.builtin.copy:
+        content: "{{ public_ip_data.content }}"
+        dest: /tmp/ip.txt
+        mode: '0644'

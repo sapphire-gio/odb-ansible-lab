@@ -47,3 +47,20 @@ ansible-playbook ansible-vars.yml
 ansible -m ansible.builtin.command -a "cat /tmp/ip.txt" all
 ```
 
+## Run public IP Playbook
+```
+ansible-playbook --limit ODBTST public-ip.yml
+```
+## adhoc command
+ansible -m ansible.builtin.command -a "cat /tmp/ip.txt" all
+
+## limit command
+ansible-playbook --limit azure_rm_linux public-ip.yml
+
+## Ping Windows Hosts
+```
+ansible -m win_ping all --limit azure_rm_windows
+```
+
+## Ping linux
+ansible -m ping all --limit azure_rm_linux
